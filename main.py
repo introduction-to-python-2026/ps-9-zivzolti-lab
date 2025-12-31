@@ -5,7 +5,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-parkinson = pd.read_csv("/content/parkinsons.csv")
+parkinson = pd.read_csv("/content/parkinsons.csv") 
 parkinson = parkinson.dropna()
 
 X = parkinson[['DFA', 'PPE']]
