@@ -8,18 +8,21 @@ from sklearn.model_selection import train_test_split
 parkinson = pd.read_csv("/content/parkinsons.csv")
 parkinson = parkinson.dropna()
 
-X = parkinson[['DFA', 'PPE']]
+x = parkinson[['DFA', 'PPE']]
 y = parkinson['status']
 
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+x_train_i, x_test_i, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)
+scaler = MinMaxScaler()
+x_train = scaler.fit_transform(x_train_i)
+x_test = scaler.fit_transform(x_test_i)
+
+
 
 svc = SVC()
-svc.fit(X_train, y_train)
+svc.fit(x_train, y_train)
 
-y_pred = svc.predict(X_test)
+y_pred = svc.predict(x_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(accuracy)
 
