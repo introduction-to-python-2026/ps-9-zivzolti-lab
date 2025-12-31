@@ -5,7 +5,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-parkinson = pd.read_csv("/content/parkinsons.csv") 
+parkinson = pd.read_csv("/content/parkinsons.csv")
 parkinson = parkinson.dropna()
 
 X = parkinson[['DFA', 'PPE']]
@@ -14,7 +14,7 @@ y = parkinson['status']
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)
 
 svc = SVC()
 svc.fit(X_train, y_train)
