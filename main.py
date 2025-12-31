@@ -17,7 +17,7 @@ X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 svc = SVC()
-svc.fit(X, y)
+svc.fit(X_train, y_train)
 
 y_pred = svc.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
